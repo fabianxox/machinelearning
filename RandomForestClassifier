@@ -1,0 +1,28 @@
+from sklearn.ensemble import RandomForestClassifier
+
+# Sample training data (weight in grams, color_score)
+# color_score: how red it is (0 = not red, 1 = very red)
+X_train = [
+    [150, 0.9],   # Apple
+    [170, 0.85],  # Apple
+    [140, 0.95],  # Apple
+    [130, 0.1],   # Orange
+    [120, 0.2],   # Orange
+    [110, 0.3]    # Orange
+]
+
+# Labels (0 = Orange, 1 = Apple)
+y_train = [1, 1, 1, 0, 0, 0]
+
+# Create the model
+model = RandomForestClassifier(n_estimators=10, random_state=42)
+
+# Train the model
+model.fit(X_train, y_train)
+
+# Make predictions
+print(model.predict([[160, 0.88]]))  # Might guess Apple
+print(model.predict([[165, 0.85]]))  # Might guess Orange
+
+# Check accuracy on training data (just for demo)
+print("Accuracy:", model.score(X_train, y_train))
