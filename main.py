@@ -78,7 +78,7 @@ class Sensor(BaseModel):
 # -----------------------------
 
 @app.post("/sensor")
-def post(data: Sensor):
+async def post(data: Sensor):
 
     is_anomaly, probability = detect_anomaly(
         data.temperature,
